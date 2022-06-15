@@ -1,0 +1,22 @@
+# Build and Install Dirs
+build
+install
+
+# Paper
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.aux
+paper/*.out
+paper/*.brf
+paper/*.synctex.gz
+paper/tex/*.log
+
+videos/
+
+# vim swp
+*.swp
+*.swo
+
+# python
+*__pycache__*

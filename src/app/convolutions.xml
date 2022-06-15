@@ -1,0 +1,45 @@
+<application>
+    <name>Convolutions</name>
+    <description>convolutions as proposed by Scheerlinck 2009's and Our implementation </description>
+    <version>1.0</version>
+
+<!--module-->
+<module>
+    <name>vPreProcess</name>
+    <parameters>--width 640 --height 480 --flipx true --flipy true --split_stereo false --filter_spatial true --filter_temporal false</parameters>
+    <node>localhost</node>
+</module>
+
+<module>
+    <name>liteConv</name>
+    <parameters>--testName gun_bullet_gnome</parameters>
+    <node>localhost</node>
+</module>
+
+<module>
+    <name>refConv</name>
+    <parameters>--testName gun_bullet_gnome</parameters>
+    <node>localhost</node>
+</module>
+
+<!--vPreProcess ports-->
+<connection>
+  <from>/file/gen3dvs:o</from>
+  <to>/vPreProcess/AE:i</to>
+  <protocol>fast_tcp</protocol>
+</connection>
+
+<!--Convolution ports-->
+<connection>
+	<from>/vPreProcess/AE:o</from>
+	<to>/liteConv/AE:i</to>
+	<protocol>fast_tcp</protocol>
+</connection>
+
+<connection>
+	<from>/vPreProcess/AE:o</from>
+	<to>/refConv/AE:i</to>
+	<protocol>fast_tcp</protocol>
+</connection>
+
+</application>
